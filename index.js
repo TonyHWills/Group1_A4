@@ -180,18 +180,20 @@ app.post('/deleteCourseById', async (req,res) => {
         return res.status(500).json("{message: Failed to delete course}");
     }
 });
-app.post('/removeStudentFromClasses', async (req,res) => {
-    try {
-        let learner = await Crypto.findOne({_id: req.body.id});
-        if (learner){
-            await Student.deleteOne({_id: req.body.id});
-            return res.status(200).json("{message: Student removed from course!}");
-        }else {
-            return res.status(200).json("{message: No student found}")
+
+app.post('/removeStudentFromClasses', async (req,res) =>{
+    try{
+        let learner = await Student.findOne({studentID: req.body.studentid});
+        if(learner){
+            await Student.deleteOne({studentID: req.body.studentid})
+            return res.status(200).json("{message: student deleted}");
+        }
+        else{
+            return res.status(200).json("{message: no student found}");
         }
     }
-    catch {
-        return res.status(500).json("{message: Failed to edit student by ID}");
+    catch{
+        return res.status(500).json("{message: Failed to delete student by studentID - bad data}");
     }
 });
 app.listen(PORT, () => {
