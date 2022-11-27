@@ -9,7 +9,7 @@ const mongoose = require('mongoose');
 const PORT = 1200;
 let today = new Date().toLocaleDateString()
 
-const dbUrl = "mongodb+srv://admin:<3LACq6Y_Mqq!CK.>@cloud.met3ruq.mongodb.net/test";
+const dbUrl = "mongodb+srv://admin:LOLhihi@cloud.met3ruq.mongodb.net/test";
 
 //Connect to MongoDB
 mongoose.connect(dbUrl, {
